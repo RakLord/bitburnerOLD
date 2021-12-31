@@ -2,8 +2,22 @@
 bitburner script collection
 
 
-Just copy paste the scripts into your home server and name them the same as i have. then `run rak_hak.ns`
+---- Auto Hack ----
+1. `rak_hak.js`
+2. `vuln_server.js`
 
-To check how close your servers are to the money threshold do `tail vuln_server.ns` from your home server
+Usage: Run `rak_hak.js` with the optional arguement of a server to target,
+You can check progress by using `tail` on the `vuln_server.js` process
 
-The script will attempt to hack all servers and run the vuln_server script on it, it may have issues and be bad code but it works, i think...
+
+---- Auto server opener ----
+1. `open_servers.js`
+
+Usage: Just run the command can use the parameter `-- tail` to see output
+
+
+---- Server Auto Buy ----
+1. `buy_servers.js`
+
+Usage: Run the command to see max ram you can afford to buy max off. pass the param `yes` to enable auto re-buy
+
