@@ -1,4 +1,4 @@
-//vuln_server.ns
+//vuln_server.js
 let target_server;
 export async function main(ns) {
 	ns.disableLog("ALL");
