@@ -1,5 +1,6 @@
 /** @param {NS} ns **/
 export async function main(ns) {
+	ns.disableLog("ALL");
 	var serversSeen = ns.scan("home");
 	var currentScan;
 	var isNuked;
@@ -14,7 +15,6 @@ export async function main(ns) {
 			}
 		}
 	}
-	ns.tprint(serversSeen);
 	for (let i = 0; i < serversSeen.length; i++) {
 		var portsRequired = ns.getServerNumPortsRequired(serversSeen[i]);
 		var rootAccess = ns.hasRootAccess(serversSeen[i]);
@@ -61,9 +61,9 @@ export async function main(ns) {
 		var strLen = maxLen - startStr.length;
 		
 		var fillStr = new Array(strLen + 1).join(" ");
-		ns.tprint(outStr + fillStr + isNuked);
+		ns.print(outStr + fillStr + isNuked);
 	}
-	ns.tprint("Newly Nuked Servers: " + newOpens);
-	ns.tprint("Vulnerable Servers: " + openCount);
-	ns.tprint("Un-Nuked Servers: " + closedCount);
+	ns.print("Newly Nuked Servers: " + newOpens);
+	ns.print("Vulnerable Servers: " + openCount);
+	ns.print("Un-Nuked Servers: " + closedCount);
 }
