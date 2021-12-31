@@ -1,6 +1,7 @@
 /** @param {NS} ns **/
 export async function main(ns) {
 	ns.disableLog("ALL");
+	var delay = ns.args[0];
 	var serversSeen = ns.scan("home");
 	var currentScan;
 	var isNuked;
@@ -62,6 +63,10 @@ export async function main(ns) {
 		
 		var fillStr = new Array(strLen + 1).join(" ");
 		ns.print(outStr + fillStr + isNuked);
+
+		if (delay) {
+			await ns.sleep(delay);
+		}
 	}
 	ns.print("Newly Nuked Servers: " + newOpens);
 	ns.print("Vulnerable Servers: " + openCount);
