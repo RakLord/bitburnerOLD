@@ -20,7 +20,7 @@ export async function main(ns) {
 		}
 	}
 	ns.tprint(serversSeen);
-
+	var totalThreads = 0;
 	var working = 0;
 	var failed = 0;
 	for (let i = 0; i < serversSeen.length; i++) {
@@ -30,6 +30,7 @@ export async function main(ns) {
 			ns.tprint("[" + serversSeen[i] + "]" + "[" + threadsToUse + " threads] " + "Successful");
 			ns.exec(hackScript, serversSeen[i], threadsToUse, target);
 			working++;
+			totalThreads = totalThreads + threadsToUse;
 		} else {
 			ns.tprint("[" + serversSeen[i] + "]" + "[" + threadsToUse + " threads] " + "Failed");
 			failed++;
@@ -37,4 +38,5 @@ export async function main(ns) {
 	}
 	ns.tprint("Succesful: " + working);
 	ns.tprint("Failed: " + failed);
+	ns.tprint("Using " + totalThreads + " threads.");
 }
