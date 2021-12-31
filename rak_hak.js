@@ -45,13 +45,13 @@ export async function main(ns) {
 				portsOpen++;
 			}
 		}
-		ns.tprint("PORTS OPEND: " + portsOpen);
+		ns.tprint("PORTS OPENED: " + portsOpen);
 	}
 
 
 	var working = 0;
 	for (let i = 0; i < serversSeen.length; i++) {
-		var threadsToUse = Math.floor((ns.getServerMaxRam(serversSeen[i]) - ns.getServerUsedRam(serversSeen[i])) / ns.getScriptRam("vuln_server.ns", "home"));
+		var threadsToUse =  Math.floor((ns.getServerMaxRam(serversSeen[i]) - ns.getServerUsedRam(serversSeen[i])) / ns.getScriptRam("vuln_server.ns", "home"));
 		await ns.scp("vuln_server.ns", "home", serversSeen[i]);
 		if (threadsToUse > 0) {
 			ns.tprint("[" + serversSeen[i] + "]" + "[" + threadsToUse + " threads] " + "Failed");
