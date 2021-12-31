@@ -12,7 +12,7 @@ export async function main(ns) {
 			if (ns.getServerSecurityLevel(target_server) > securityThresh) {
 				await ns.weaken(target_server);
 			} else if (ns.getServerMoneyAvailable(target_server) < moneyThresh) {
-				ns.print("Server money: " + ns.getServerMoneyAvailable(target_server) + " | Threshold: " + moneyThresh);
+				ns.print("Threshold %: " + (ns.getServerMoneyAvailable(target_server) / moneyThresh) * 100);
 				await ns.grow(target_server);
 			} else {
 				await ns.hack(target_server);
