@@ -23,12 +23,29 @@ export async function main(ns) {
 				ns.brutessh(serversSeen[i]);
 				portsOpen++;
 			}
+			if (ns.fileExists("FTPCrack.exe", "home")) {
+				ns.ftpcrack(serversSeen[i]);
+				portsOpen++;
+			}
+			if (ns.fileExists("relaySMTP.exe", "home")) {
+				ns.relaysmtp(serversSeen[i]);
+				portsOpen++;
+			}
+			if (ns.fileExists("HTTPWorm.exe", "home")) {
+				ns.httpworm(serversSeen[i]);
+				portsOpen++;
+			}
+			if (ns.fileExists("SQLInject.exe", "home")) {
+				ns.sqlinject(serversSeen[i]);
+				portsOpen++;
+			}
 
 			if (portsOpen >= portsRequired) {
 				ns.nuke(serversSeen[i]);
+				portsOpen++;
 			}
 		}
-		ns.tprint(portsOpen)
+		ns.tprint("PORTS OPEND: " + portsOpen);
 	}
 
 
