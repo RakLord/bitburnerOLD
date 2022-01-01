@@ -17,8 +17,9 @@ export async function main(ns) {
 		}
 		//await ns.sleep(25);
 	}
+	ram = ram / 2  
 
-	ns.tprint("CALCULATED: " + totalCost);
+	ns.tprint("CALCULATED: " + ns.nFormat(totalCost, '0.00a'));
 	ns.tprint("RAM: " + ram);
 
 	function getServersCost(ram) {
