@@ -26,3 +26,9 @@ Usage: Run the command to see max ram you can afford to buy max off. pass the pa
 1. `get_server_stats.js`
 
 Usage: Pass the name of the server as args to get updates about the server every 5 seconds.
+
+
+---- Running Scripts ----
+1. `running_scripts.js`
+
+Usage: Run script to see all servers and who its targeting
