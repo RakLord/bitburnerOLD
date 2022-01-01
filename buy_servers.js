@@ -1,8 +1,8 @@
 /** @param {NS} ns **/
 export async function main(ns) {
 	var doBuy = ns.args[0];
-    var ram = 2;  // You can change this to start from a higher RAM minimum (not necesary)
-	
+	var ram = 2;  // You can change this to start from a higher RAM minimum (not necesary)
+	var maxRam = ns.getPurchasedServerMaxRam();
 	var maxServerCount = ns.getPurchasedServerLimit();
 	var totalCost;
 
@@ -16,8 +16,12 @@ export async function main(ns) {
 			break
 		}
 		//await ns.sleep(25);
+		if (ram >= maxRam) {
+			ram = maxRam;
+			break
+		}
 	}
-	ram = ram / 2  
+	ram = ram / 2
 
 	ns.tprint("CALCULATED: " + ns.nFormat(totalCost, '0.00a'));
 	ns.tprint("RAM: " + ram);
@@ -30,7 +34,7 @@ export async function main(ns) {
 	if (doBuy == "yes") {
 		var currentServers = ns.getPurchasedServers();
 		ns.tprint(currentServers);
-		for (var i = 0; i < currentServers.length; i++){
+		for (var i = 0; i < currentServers.length; i++) {
 			var serv = currentServers[i];
 			ns.deleteServer(serv);
 		}
@@ -44,5 +48,4 @@ export async function main(ns) {
 			await ns.sleep(200);
 		}
 	}
-
 }
